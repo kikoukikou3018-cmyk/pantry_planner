@@ -1,0 +1,60 @@
+/* Basic reset */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; font-family: system-ui, -apple-system, "Hiragino Kaku Gothic ProN", "Noto Sans JP", Arial, sans-serif; background:#0a0f0d; color:#e9fff4; }
+a { color: inherit; }
+
+.app-header, .app-footer { position: sticky; z-index: 10; }
+.app-header { top: 0; display:flex; align-items:center; justify-content:space-between; padding: 12px 16px; background: linear-gradient(90deg,#0b5,#0a6); border-bottom: 1px solid #0a4; }
+.app-header h1 { font-size: 18px; margin: 0; }
+.app-footer { bottom: 0; text-align:center; padding: 8px 12px; background:#071; border-top: 1px solid #0a4; }
+
+main { padding: 16px; display: grid; gap: 16px; max-width: 1100px; margin: 0 auto; }
+
+.panel { background: #0e1a16; border: 1px solid #134; border-radius: 12px; padding: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.25); }
+.panel h2 { margin: 6px 0 12px; font-size: 16px; color:#9ff9d5; }
+.panel-actions { display:flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+
+.add-row, .search-row, .filters { display: flex; gap: 8px; flex-wrap: wrap; align-items:center; }
+.add-row input, .search-row input, select { flex: 1 1 220px; padding: 10px 12px; border-radius: 10px; border: 1px solid #1a3; background:#081610; color:#e9fff4; }
+.add-row button, .panel-actions button, .import-label { padding: 10px 14px; border-radius: 10px; border: 1px solid #1a3; background:#093; cursor: pointer; }
+.import-label { display:inline-flex; align-items:center; }
+.import-label input { display:none; }
+button.ghost { background: transparent; }
+button.primary { background: #0ba; border-color:#0ba; }
+button:hover { filter: brightness(1.08); }
+
+.chips { display:flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+.chip { display:inline-flex; align-items:center; gap: 6px; padding: 8px 10px; border: 1px solid #1a3; border-radius: 999px; background:#0b1a14; }
+.chip small { opacity: 0.7; }
+.chip button { border:none; background:transparent; color:#9ff9d5; cursor:pointer; }
+
+.cards { display:grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+.card { border:1px solid #134; border-radius: 12px; background:#0b1512; padding: 12px; display:flex; flex-direction:column; gap:8px; }
+.card h3 { margin: 0; font-size: 16px; color:#aef8de; }
+.meta { display:flex; gap: 8px; flex-wrap: wrap; font-size: 12px; opacity:0.8; }
+.badges { display:flex; gap:6px; flex-wrap:wrap; }
+.badge { font-size: 11px; padding: 2px 8px; border-radius: 999px; border:1px solid #1a3; }
+.progress-wrap { width:100%; height:10px; background:#0a1813; border:1px solid #134; border-radius:6px; overflow:hidden; }
+.progress { height:100%; background:linear-gradient(90deg,#0b5,#0a8); width: 0%; }
+
+.card footer { margin-top:auto; display:flex; gap:8px; }
+.card button { padding: 8px 10px; border-radius: 8px; border:1px solid #1a3; background:#083; cursor:pointer; }
+
+.week-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr)); gap: 8px; }
+.day-cell { padding: 10px; background:#0b1512; border:1px solid #134; border-radius: 12px; display:flex; flex-direction:column; gap: 8px; }
+.day-cell h4 { margin:0; font-size: 14px; color:#9ff9d5; }
+.day-cell .slot { display:flex; flex-direction:column; gap:6px; }
+.slot-item { display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 8px; border:1px dashed #1a3; border-radius:8px; background:#0a1813; }
+.slot-item small { opacity:0.8; }
+.slot-item button { border:none; background:transparent; color:#9ff9d5; cursor:pointer; }
+
+dialog { border:none; border-radius: 12px; padding:0; width:min(720px, 96vw); background:#0b1512; color:#e9fff4; }
+.dialog-body header { display:flex; align-items:center; justify-content:space-between; gap:8px; padding: 12px; border-bottom:1px solid #134; }
+.dialog-body footer { display:flex; gap:8px; padding: 12px; border-top:1px solid #134; }
+.dialog-body #dlgContent { padding: 12px; display:flex; flex-direction:column; gap:8px; }
+#dlgClose { background:transparent; border:none; color:#e9fff4; font-size:16px; cursor:pointer; }
+
+/* Mobile friendly tweaks */
+@media (pointer: coarse) {
+  button, input, select { font-size: 16px; }
+}

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <title>おうち食材で献立 - Pantry Planner</title>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0b5">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1>おうち食材で献立</h1>
+    <button id="installBtn" class="primary" title="アプリとしてインストール">インストール</button>
+  </header>
+
+  <main>
+    <section class="panel" id="pantrySection">
+      <h2>家にある食材</h2>
+      <div class="add-row">
+        <input id="ingredientInput" type="text" placeholder="例: たまご / 玉ねぎ / 牛乳"/>
+        <input id="qtyInput" type="text" placeholder="任意: 数量やメモ (2個, 200g など)"/>
+        <button id="addBtn" class="primary">追加</button>
+      </div>
+      <div class="chips" id="pantryChips"></div>
+      <div class="panel-actions">
+        <button id="clearPantryBtn" class="ghost">全部消す</button>
+        <button id="exportPantryBtn" class="ghost">書き出し</button>
+        <label class="import-label ghost">
+          読み込み<input id="importPantryFile" type="file" accept="application/json" hidden>
+        </label>
+      </div>
+    </section>
+
+    <section class="panel" id="filterSection">
+      <h2>レシピ検索</h2>
+      <div class="filters">
+        <div class="filter">
+          <label>一致率: <span id="matchPctLabel">80%</span></label>
+          <input type="range" id="matchPct" min="40" max="100" value="80" step="5">
+        </div>
+        <div class="filter">
+          <label>調理時間(最大)</label>
+          <select id="maxTime">
+            <option value="999">指定なし</option>
+            <option value="10">10分</option>
+            <option value="20">20分</option>
+            <option value="30">30分</option>
+            <option value="45">45分</option>
+            <option value="60">60分</option>
+          </select>
+        </div>
+        <div class="filter">
+          <label>カテゴリ</label>
+          <select id="category">
+            <option value="">全部</option>
+          </select>
+        </div>
+        <div class="filter">
+          <label><input type="checkbox" id="onlyNoShop"> 買い物不要だけ表示</label>
+        </div>
+      </div>
+      <div class="search-row">
+        <input id="searchInput" type="text" placeholder="レシピ名や材料で検索 (例: カレー, 豆腐)">
+        <button id="searchClearBtn" class="ghost">クリア</button>
+      </div>
+    </section>
+
+    <section class="panel" id="resultsSection">
+      <h2>候補レシピ</h2>
+      <div id="results" class="cards"></div>
+    </section>
+
+    <section class="panel" id="menuSection">
+      <h2>一週間の献立</h2>
+      <div id="weekPlan" class="week-grid"></div>
+      <div class="panel-actions">
+        <button id="exportPlanBtn" class="ghost">献立を書き出し</button>
+        <button id="clearPlanBtn" class="ghost">献立クリア</button>
+      </div>
+    </section>
+
+    <dialog id="recipeDialog">
+      <article class="dialog-body">
+        <header>
+          <h3 id="dlgTitle"></h3>
+          <button id="dlgClose" aria-label="閉じる">✕</button>
+        </header>
+        <div id="dlgContent"></div>
+        <footer>
+          <button id="addToPlanBtn" class="primary">献立に追加</button>
+          <button id="dlgClose2" class="ghost">閉じる</button>
+        </footer>
+      </article>
+    </dialog>
+  </main>
+
+  <footer class="app-footer">
+    <small>© Pantry Planner — オフライン対応、あなたのiPad/スマホでもOK</small>
+  </footer>
+
+  <script defer src="app.js"></script>
+</body>
+</html>
